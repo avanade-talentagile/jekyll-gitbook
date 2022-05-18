@@ -16,12 +16,14 @@
                     {{ site.title | escape }}
                 </a>
             </li>
-
-            <li class="divider"></li>
+            {%- assign hasCol = false -%}
 
             {% for collection in site.collections %}
                 <!-- <p>{{ collection.label }}</p> -->
                 {% if collection.output %}
+                    {%- assign hasCol = true -%}
+                    <li class="divider"></li>
+
                     {% assign reversed_posts = site[collection.label] | reverse %}
 
                     {% for post in reversed_posts %}
@@ -40,11 +42,12 @@
                             {% endif %}
                         </li>
                     {% endfor %}
-
-                    <li class="divider"></li>
                 {% endif %}
             {% endfor %}
-
+            
+            {% if hasCol != false %}
+            <li class="divider"></li>
+            {%endif %}
             <li>
                 <a href="https://github.com/sighingnow/jekyll-gitbook/fork" target="blank" class="gitbook-link">
                     Fork it Now!
