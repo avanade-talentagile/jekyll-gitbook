@@ -22,7 +22,7 @@
                 <!-- <p>{{ collection.label }}</p> -->
                 {% if collection.output %}
                     {%- assign hasCol = true -%}
-                    <li class="divider"></li>
+                    <li class="divider collection"></li>
 
                     {% assign reversed_posts = site[collection.label] | reverse %}
 
@@ -46,7 +46,7 @@
             {% endfor %}
             
             {% if hasCol != false %}
-            <li class="divider"></li>
+            <li class="divider optionnal"></li>
             {%endif %}
             <li>
                 <a href="https://github.com/sighingnow/jekyll-gitbook/fork" target="blank" class="gitbook-link">
