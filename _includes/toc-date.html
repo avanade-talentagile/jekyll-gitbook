@@ -21,10 +21,13 @@
             {% for collection in site.collections %}
                 <!-- <p>{{ collection.label }}</p> -->
                 {% if collection.output %}
-                    {%- assign hasCol = true -%}
-                    <li class="divider collection"></li>
-
                     {% assign reversed_posts = site[collection.label] | reverse %}
+                    {% assign reserved_posts_count = reversed_posts | size %}
+
+                    {% if reserved_posts_count > 0 %}
+                    {%- assign hasCol = true -%}
+                    <li class="divider"></li>
+                    {% endif %}
 
                     {% for post in reversed_posts %}
                         {% if page.url == post.url %}
@@ -46,7 +49,7 @@
             {% endfor %}
             
             {% if hasCol != false %}
-            <li class="divider optionnal"></li>
+            <li class="divider"></li>
             {%endif %}
             <li>
                 <a href="https://github.com/sighingnow/jekyll-gitbook/fork" target="blank" class="gitbook-link">
